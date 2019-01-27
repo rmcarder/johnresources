@@ -251,23 +251,3 @@ h5,h6{
         letter-spacing: 1px;
                 }  
 
-
-    #Jenks,#team {
-      background-color: #425661;
-      color: #425661;
-      border: none;
-      border-radius: 24px;
-
-    .axis path,
-    .axis line {
-      fill: none;
-      stroke: #425661;
-      shape-rendering: crispEdges;
-                }
-
-    .btn-toolbar {
-        font-weight: 2px;
-      color: #FFFFFF;
-    }
-
-    
