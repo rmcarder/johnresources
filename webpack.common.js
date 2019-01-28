@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+
 //const DynamicImport = require('babel-plugin-syntax-dynamic-import');
 
 module.exports = env => { // module.exports is function now to pass in env variable from cli defined in package.json
@@ -9,6 +11,7 @@ module.exports = env => { // module.exports is function now to pass in env varia
                 'js/index': './src/index.js',
             },
             module: {
+                
                 rules: [{
                         test: /\.js$/,
                         exclude: [/node_modules/, /\.min\./, /vendor/],
@@ -40,13 +43,26 @@ module.exports = env => { // module.exports is function now to pass in env varia
                                 }
                             ]
                         },
+                          
                         {
                             test: /\.md$/,
-                            use: ['html-loader', {
-                                loader: 'markdown-loader',
-                                options: {
-                                    smartypants: true
-                                }
+                            use: [{
+                                loader: 'html-loader'
+                                },
+                                {
+                                    loader: 'markdown-loader',
+                                    options: {
+                                        smartypants: true
+                                    }
+                                },
+                                
+                            ]
+                        },
+                        {
+                            test: /\.md$/,
+                            enforce: 'pre',
+                            use: [{
+                                loader: 'webpack-import-glob-loader'
                             }]
                         }
 
