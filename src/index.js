@@ -1,4 +1,5 @@
 /* global require */
+//import 'normalize.css';
 import './css/style.css';
 
 function importAll(r) {
