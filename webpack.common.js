@@ -45,18 +45,8 @@ module.exports = env => { // module.exports is function now to pass in env varia
                         },
                           
                         {
-                            test: /\.md$/,
-                            use: [{
-                                loader: 'html-loader'
-                                },
-                                {
-                                    loader: 'markdown-loader',
-                                    options: {
-                                        smartypants: true
-                                    }
-                                },
-                                
-                            ]
+                            test: /pages\/.*\.html$/,
+                            loader: 'html-loader'
                         }
                     ]
                 },
