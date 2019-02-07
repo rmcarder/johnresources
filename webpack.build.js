@@ -4,7 +4,7 @@ const common = require('./webpack.common.js');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 //const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const PrerenderSPAPlugin = require('prerender-spa-plugin');
+//const PrerenderSPAPlugin = require('prerender-spa-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 //const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 //const pretty = require('pretty');
@@ -40,7 +40,7 @@ module.exports = env => {
                 //inject: false,
                 template: './src/index.html'
             }),
-            new PrerenderSPAPlugin({
+            /*new PrerenderSPAPlugin({
                 // Required - The path to the webpack-outputted app to prerender.
                 staticDir: path.join(__dirname, 'dist'),
                 // Required - Routes to render.
@@ -52,7 +52,7 @@ module.exports = env => {
                     //sloMo: 10000,
                     renderAfterTime: 1000
                 }),
-              /*  postProcess: function(renderedRoute){
+                postProcess: function(renderedRoute){
                     renderedRoute.html = renderedRoute.html.replace(/class="emitted-css" href="(.*?)"/,'class="emitted-css" href="' + publicPath + '$1' + '"');
                     renderedRoute.html = renderedRoute.html.replace(/class="emitted-bundle" src="(.*?)"/g,'class="emitted-bundle" src="' + publicPath + '$1' + '"');
                     //renderedRoute.html = renderedRoute.html.replace('src="js/index.js"','src="' + publicPath + 'js/index.js"');
@@ -60,7 +60,7 @@ module.exports = env => {
                     renderedRoute.html = pretty(renderedRoute.html);
                     return renderedRoute;
                 }*/
-            }),
+          //  }),
            
             new webpack.EnvironmentPlugin({
                 'NODE_ENV': env
@@ -68,11 +68,11 @@ module.exports = env => {
             new webpack.SourceMapDevToolPlugin({
               filename: '[name].js.map',
             }),
-            new CleanWebpackPlugin(['dist']),
+            new CleanWebpackPlugin(['docs']),
         ],
         output: {
             filename: '[name].js?v=[hash:6]',
-            path: path.resolve(__dirname, 'dist'),
+            path: path.resolve(__dirname, 'docs'),
            // publicPath
         }
     });
