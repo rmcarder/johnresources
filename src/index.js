@@ -9,6 +9,7 @@ function observerCallback(entries){
     
     entries.forEach(entry => {
     var direction;
+    console.log(entry);
     if ( previousPositions[entry.target.id] === null || previousPositions[entry.target.id] > entry.boundingClientRect.y ){
         direction = 'up';
     } else {
@@ -30,7 +31,7 @@ function observerCallback(entries){
 
 var observerOptions = {
   root: null,
-  rootMargin: '-50px 0px 0px 0px',
+  rootMargin: '-250px 0px 0px 0px',
   threshold: 1.0
 }
 
@@ -62,7 +63,15 @@ function insertSection(r, key, i){
     section.id = id;
     section.classList.add('section','tabcontent');
     section.appendChild(anchor);
-    observer.observe(anchor);
+    if ( requestIdleCallback ){  // was being called while content was being painted, resulting in erroneous
+                                 // active chapters. this should only be run run in prerender and in dev so back-up
+                                 // is for good measure only (ie rquestIdleCallback should be available)
+        requestIdleCallback(() => {
+            observer.observe(anchor);
+        }, {timeout: 1000});
+    } else {
+        observer.observe(anchor); 
+    }
     section.insertAdjacentHTML('beforeend', r(key));
     document.querySelector('main').appendChild(section);
 
@@ -85,8 +94,16 @@ function importAll(r) {
   });
   
 }
+
+function initButton(){
+    document.querySelector('.btn--toggle').addEventListener('click', function(){
+        document.querySelector('.primary-navigation').classList.toggle('is-open');
+    });
+}
+
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
 smoothscroll.polyfill();
 importAll(require.context('./pages/', true, /\.html$/));
+initButton();
