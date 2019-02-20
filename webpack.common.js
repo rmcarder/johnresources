@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 //const DynamicImport = require('babel-plugin-syntax-dynamic-import');
 
@@ -27,12 +27,13 @@ module.exports = env => { // module.exports is function now to pass in env varia
                         ]},
                         {
                             test: /\.css$/,
-                            use: [{
-                                    loader: 'style-loader'
-                                }, {
+                            use: [{ 
+                                    loader: MiniCssExtractPlugin.loader,
+                                },{
                                     loader: 'css-loader',
                                     options: {
-                                        sourceMap: true
+                                        sourceMap: true,
+                                        importLoaders: 1
                                     }
                                 },
                                 {
@@ -51,6 +52,12 @@ module.exports = env => { // module.exports is function now to pass in env varia
                     ]
                 },
                 plugins: [
+                    new MiniCssExtractPlugin({
+                        // Options similar to the same options in webpackOptions.output
+                        // both options are optional
+                        filename: "css/styles.css?v=[hash:6]",
+                        chunkFilename: "[id].css",
+                    }),
                     new CopyWebpackPlugin(
                         [
                             {
