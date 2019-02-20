@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //const DynamicImport = require('babel-plugin-syntax-dynamic-import');
 
@@ -66,6 +67,11 @@ module.exports = env => { // module.exports is function now to pass in env varia
                             },
                         ]
                     ),
+                    new HtmlWebpackPlugin({
+                        //title: 'title title title',
+                        template: './src/index.html',
+                     //   inject: false,
+                    }),
                 ],
                 /*resolve: {
                     alias: {
