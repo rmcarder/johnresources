@@ -97,10 +97,15 @@ th {
 
 
 .main-content {
-  margin-left: 25%;
   padding: 0 20px;
 }
 
+.header-hero {
+  width: 100%;
+  height: calc(100vh - 70px);
+  background-color: #32415C;
+  display: block;
+}
 .section {
   max-width: 725px;
   padding-bottom: 75px;
@@ -111,16 +116,16 @@ th {
   padding-bottom: 90px;
   display: block;
 }
+.content-wrapper {
+  display: flex;
+}
 .primary-navigation {
     
     background-color: #f1f1f1;
     border: 1px solid #ccc;
-    bottom: 0;
-    left: 0;
     height: 100%;
     overflow-y: auto;
-    position: fixed;
-    top: 70px;
+    
     width: 25%;
     z-index: 2;
     will-change:scroll-position;
@@ -178,6 +183,12 @@ th {
 }
 .logo {
   margin-top: 10px;
+  transform: scale(1.5);
+  transform-origin: top left;
+  transition: transform 0.2s ease-in-out;
+}
+.logo-small {
+  transform: scale(1);
 }
 .btn--toggle {
     position: relative;

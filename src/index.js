@@ -3,6 +3,7 @@ import 'normalize.css';
 import './css/style.css';
 import smoothscroll from 'smoothscroll-polyfill';
 import prerender from './prerender.js';
+import scrollMonitor from 'scrollmonitor';
 
 
 
@@ -52,7 +53,18 @@ function setObserver(){
         }
     });
 }
-
+function setScrollMonitor(){
+    var element = document.querySelector('.content-wrapper'),
+        watcher = scrollMonitor.create(element, {top: 105}),
+        logo = document.querySelector('.logo');
+console.log(watcher);
+    watcher.fullyEnterViewport(() => {
+        
+            console.log(watcher);
+            logo.classList.add('logo-small');
+        
+    });
+}   
 function scrollToSection(e, frag){
     console.log(frag);
     e.preventDefault();
@@ -79,6 +91,7 @@ window.onbeforeunload = function () {
 smoothscroll.polyfill();
 if ( window.IS_PRERENDERING || process.env.NODE_ENV === 'development' )
 prerender(require.context('./pages/', true, /\.html$/));
+setScrollMonitor();
 setObserver();
 initNav();    
 initButton();

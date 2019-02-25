@@ -25,6 +25,7 @@
     "normalize.css": "^8.0.1",
     "postcss-loader": "^2.1.3",
     "prerender-spa-plugin": "^3.4.0",
+    "scrollmonitor": "^1.2.4",
     "smoothscroll-polyfill": "^0.4.3",
     "style-loader": "^0.20.3",
     "webpack": "^4.20.2",
