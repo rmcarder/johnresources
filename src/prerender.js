@@ -20,7 +20,7 @@ function insertSection(r, key, i){
     section.classList.add('section','tabcontent');
     section.appendChild(anchor);
     section.insertAdjacentHTML('beforeend', r(key));
-    document.querySelector('main').appendChild(section);
+    document.querySelector('main .container-inner').appendChild(section);
 
     // nav
     navItem.innerHTML = section.querySelector('h2').innerHTML;

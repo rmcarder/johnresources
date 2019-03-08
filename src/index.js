@@ -55,14 +55,25 @@ function setObserver(){
 }
 function setScrollMonitor(){
     var element = document.querySelector('.content-wrapper'),
-        watcher = scrollMonitor.create(element, {top: 105}),
-        logo = document.querySelector('.logo');
+        watcher = scrollMonitor.create(element, {top: 75}),
+        logo = document.querySelector('.logo'),
+        header = document.querySelector('.header'),
+        nav = document.querySelector('.primary-navigation');
 console.log(watcher);
     watcher.fullyEnterViewport(() => {
         
             console.log(watcher);
             logo.classList.add('logo-small');
+            header.classList.add('header-small');
+            nav.classList.add('visible');
         
+    });
+    watcher.partiallyExitViewport(() => {
+        if (watcher.isBelowViewport){
+            logo.classList.remove('logo-small');
+            header.classList.remove('header-small');
+            nav.classList.remove('visible');
+        }
     });
 }   
 function scrollToSection(e, frag){
