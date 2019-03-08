@@ -369,7 +369,7 @@ body {
   padding-top: 70px;
   background-color: #ffffff;
   font-family: 'AvertaStd', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   color: #425661;
 }
 h1,h2,h3,h4,h5,h6 {
@@ -447,33 +447,68 @@ th {
 
 
 .main-content {
-  margin-left: 25%;
   padding: 0 20px;
 }
 
+.header-hero {
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  background-color: #32415C;
+  display: block;
+  padding: 30vh 40px 100px;
+  margin-bottom: 30vh;
+
+}
+.header-hero--inner {
+  color: #fff;
+  font-size: 24px;
+  padding: 22px;
+}
+.header-hero--inner p {
+  max-width: 1100px;
+  line-height: 160%;
+
+}
 .section {
-  max-width: 725px;
+  width: 100%;
+
   padding-bottom: 75px;
   padding-top: 10px;
   min-height: 100vh;
 }
+.main-content .section {
+  max-width: 800px;
+}
+.main-content .container-inner {
+
+   padding-top: 150px;
+  }
 .anchor {
   padding-bottom: 90px;
   display: block;
+}
+.content-wrapper {
+  display: -ms-flexbox;
+  display: flex;
 }
 .primary-navigation {
     
     background-color: #f1f1f1;
     border: 1px solid #ccc;
-    bottom: 0;
-    left: 0;
     height: 100%;
     overflow-y: auto;
-    position: fixed;
-    top: 70px;
+    
     width: 25%;
     z-index: 2;
     will-change:scroll-position;
+    transition: transform 0.2s ease-in-out;
+    transform: translateX(-100%);
+    position: fixed;
+    top: 75px;
+}
+.primary-navigation.visible {
+    transform: translateX(0);
+
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -511,25 +546,46 @@ th {
     width: 1%;
 }
 .header {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
-
+  
   background: #32415C;
   color: white;
-  height: 70px;
+  height: 150px;
   left: 0;
   position: fixed;
   right:0;
   top:0;
   z-index: 2;
+  transform-origin: top;
+}
+.header-small {
+  transform: scaleY(.5);
+}
+.container-inner {
+  width: 50%;
+  margin: 0 auto;
+}
+main .container-inner {
+  padding: 20px;
+  margin-left: 25%;
+}
+.header--inner {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+
 }
 .icon {
   padding:5px;
 }
 .logo {
   margin-top: 10px;
+  transform: scale(1);
+  transform-origin: top left;
+  transition: transform 0.2s ease-in-out;
+}
+.logo-small {
+  transform: scaleX(.5) scale(1.3);
 }
 .btn--toggle {
     position: relative;
