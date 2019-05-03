@@ -47,7 +47,8 @@ module.exports = env => { // module.exports is function now to pass in env varia
                         },
                           
                         {
-                            test: /pages\/.*\.html$/,
+                            test: /\.html$/,
+                            exclude: /index\.html/,
                             loader: 'html-loader'
                         }
                     ]
