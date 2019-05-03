@@ -107,6 +107,11 @@ th {
   display: block;
   padding: 30vh 40px 100px;
   margin-bottom: 30vh;
+  background: #32415C url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 30 17.9' style='enable-background:new 0 0 30 17.9;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E%3C/style%3E%3Ctitle%3EShape%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cg id='Original-Card-Dark'%3E%3Cg id='_x39_-Approach' transform='translate(-1303.000000, -1066.000000)'%3E%3Cpolygon id='Shape' class='st0' style='fill: %23FFFFFF' points='1329.5,1066 1333,1069.4 1318,1084 1303,1069.4 1306.5,1066 1318,1077.2 ' fill='%23FFFFFF'%3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/svg%3E") no-repeat;
+  background-position: center calc(100vh - 130px);
+
+  background-size: 20px;
+
 
 }
 .header-hero--inner {
@@ -207,7 +212,7 @@ th {
   transform-origin: top;
 }
 .header-small {
-  transform: scaleY(.5);
+  height: 75px;
 }
 .container-inner {
   width: 50%;
@@ -232,7 +237,7 @@ main .container-inner {
   transition: transform 0.2s ease-in-out;
 }
 .logo-small {
-  transform: scaleX(.5) scale(1.3);
+  width: 132px;
 }
 .btn--toggle {
     position: relative;
