@@ -16,7 +16,7 @@ html {
   line-height: 20px;
 }
 body {
-  padding-top: 70px;
+ 
   background-color: #ffffff;
   font-family: 'AvertaStd', sans-serif;
   font-size: 16px;
@@ -97,7 +97,7 @@ th {
 
 
 .main-content {
-  padding: 0 20px;
+  max-width: calc(100% - 320px);
 }
 
 .header-hero {
@@ -105,12 +105,12 @@ th {
   min-height: calc(100vh - 70px);
   background-color: #32415C;
   display: block;
-  padding: 30vh 40px 100px;
-  margin-bottom: 30vh;
-  background: #32415C url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 30 17.9' style='enable-background:new 0 0 30 17.9;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E%3C/style%3E%3Ctitle%3EShape%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cg id='Original-Card-Dark'%3E%3Cg id='_x39_-Approach' transform='translate(-1303.000000, -1066.000000)'%3E%3Cpolygon id='Shape' class='st0' style='fill: %23FFFFFF' points='1329.5,1066 1333,1069.4 1318,1084 1303,1069.4 1306.5,1066 1318,1077.2 ' fill='%23FFFFFF'%3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/svg%3E") no-repeat;
+  /*padding: 30vh 40px 100px;*/
+  /*margin-bottom: 30vh;*/
+  /*background: #32415C url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 30 17.9' style='enable-background:new 0 0 30 17.9;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E%3C/style%3E%3Ctitle%3EShape%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cg id='Original-Card-Dark'%3E%3Cg id='_x39_-Approach' transform='translate(-1303.000000, -1066.000000)'%3E%3Cpolygon id='Shape' class='st0' style='fill: %23FFFFFF' points='1329.5,1066 1333,1069.4 1318,1084 1303,1069.4 1306.5,1066 1318,1077.2 ' fill='%23FFFFFF'%3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/svg%3E") no-repeat;
   background-position: center calc(100vh - 130px);
 
-  background-size: 20px;
+  background-size: 20px;*/
 
 
 }
@@ -118,9 +118,9 @@ th {
   color: #fff;
   font-size: 24px;
   padding: 22px;
+  max-width: 850px !important;
 }
 .header-hero--inner p {
-  max-width: 1100px;
   line-height: 160%;
 
 }
@@ -128,15 +128,16 @@ th {
   width: 100%;
 
   padding-bottom: 75px;
-  padding-top: 10px;
+  
   min-height: 100vh;
 }
 .main-content .section {
-  max-width: 800px;
 }
 .main-content .container-inner {
-
-   padding-top: 150px;
+    width: 100%;
+   max-width: 650px;
+   margin: 0 auto;
+   padding: 100px 10px 0;
   }
 .anchor {
   padding-bottom: 90px;
@@ -149,16 +150,18 @@ th {
     
     background-color: #f1f1f1;
     border: 1px solid #ccc;
+    border-top-width: 0;
     height: 100%;
     overflow-y: auto;
     
-    width: 25%;
+    width: 320px;
     z-index: 2;
     will-change:scroll-position;
     transition: transform 0.2s ease-in-out;
-    transform: translateX(-100%);
+    transform: translateX(100%);
     position: fixed;
-    top: 75px;
+    top: 60px;
+    right: 0;
 }
 .primary-navigation.visible {
     transform: translateX(0);
@@ -200,44 +203,54 @@ th {
     width: 1%;
 }
 .header {
-  
-  background: #32415C;
-  color: white;
-  height: 150px;
-  left: 0;
   position: fixed;
+  transform: translateY(-100%);
+  background: #fff;
+  height: 60px;
+  left: 0;
+  /*position: sticky;*/
   right:0;
   top:0;
   z-index: 2;
   transform-origin: top;
+  transition: transform 0.2s ease-in-out;
+  border-bottom: 1px solid #32415C;
 }
-.header-small {
-  height: 75px;
+.header.visible {
+  transform: translateY(0);
 }
 .container-inner {
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
+  max-width: 850px;
 }
 main .container-inner {
-  padding: 20px;
-  margin-left: 25%;
+  
+  
 }
 .header--inner {
+  margin: 0;
+  
   display: flex;
   justify-content: space-between;
-
+  max-width: calc(100% - 320px);
+}
+.header--inner-inner {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
 }
 .icon {
   padding:5px;
 }
 .logo {
-  margin-top: 10px;
-  transform: scale(1);
-  transform-origin: top left;
-  transition: transform 0.2s ease-in-out;
+  margin: 10px 0 30px -21px;
+  
 }
-.logo-small {
+.logo-smaller {
   width: 132px;
+  margin: 4px 0 0 0;
+  padding: 0;
 }
 .btn--toggle {
     position: relative;

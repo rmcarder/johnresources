@@ -1,11 +1,11 @@
 /* global require process */
 import 'normalize.css';
 import './css/style.css';
-import smoothscroll from 'smoothscroll-polyfill';
+//import smoothscroll from 'smoothscroll-polyfill';
 import prerender from './prerender.js';
 import scrollMonitor from 'scrollmonitor';
 
-
+/*
 
 function setObserver(){
 
@@ -52,31 +52,30 @@ function setObserver(){
             observer.observe(anchor); 
         }
     });
-}
+}*/
 function setScrollMonitor(){
-    var element = document.querySelector('.content-wrapper'),
-        watcher = scrollMonitor.create(element, {top: 75}),
-        logo = document.querySelector('.logo'),
+    var element = document.querySelector('.main-content'),
+        watcher = scrollMonitor.create(element),
         header = document.querySelector('.header'),
         nav = document.querySelector('.primary-navigation');
-console.log(watcher);
+
     watcher.fullyEnterViewport(() => {
-        
-            console.log(watcher);
-            logo.classList.add('logo-small');
-            header.classList.add('header-small');
-            nav.classList.add('visible');
+            header.classList.add('visible');
+            setTimeout(() => {
+                nav.classList.add('visible');
+            }, 200);
         
     });
     watcher.partiallyExitViewport(() => {
         if (watcher.isBelowViewport){
-            logo.classList.remove('logo-small');
-            header.classList.remove('header-small');
+            setTimeout(() => {
+                header.classList.remove('visible');
+            }, 200);
             nav.classList.remove('visible');
         }
     });
 }   
-function scrollToSection(e, frag){
+/*function scrollToSection(e, frag){
     console.log(frag);
     e.preventDefault();
     document.querySelector(frag).scrollIntoView({behavior: 'smooth', block: 'start'});
@@ -95,14 +94,14 @@ function initNav(){
         });
     });
 }
-
+*/
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
-smoothscroll.polyfill();
+//smoothscroll.polyfill();
 if ( window.IS_PRERENDERING || process.env.NODE_ENV === 'development' )
 prerender(require.context('./pages/', true, /\.html$/));
 setScrollMonitor();
-setObserver();
-initNav();    
-initButton();
+//setObserver();
+///initNav();    
+//initButton();
