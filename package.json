@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.build.js --env production",
-    "start": "webpack-dev-server --open --config webpack.dev.js --env development"
+    "start": "webpack-dev-server --open --config webpack.dev.js --env development",
+    "broadcast": "webpack-dev-server --open --config webpack.dev.js --env development --host 127.0.0.1 --port 8000"
   },
   "keywords": [],
   "author": "John Osterman",

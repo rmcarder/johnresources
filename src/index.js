@@ -1,7 +1,7 @@
 /* global require process */
 import 'normalize.css';
 import './css/style.css';
-//import smoothscroll from 'smoothscroll-polyfill';
+import smoothscroll from 'smoothscroll-polyfill';
 import prerender from './prerender.js';
 import scrollMonitor from 'scrollmonitor';
 
@@ -12,8 +12,8 @@ function setObserver(){
     var previousPositions = {},
         observerOptions = {
           root: null,
-          rootMargin: '-250px 0px 0px 0px',
-          threshold: 1.0
+          rootMargin: '0px 0px 0px 0px',
+          threshold: [0.25, 0.5, 0.75, 1.0]
         },
         observer;
 
@@ -30,14 +30,21 @@ function setObserver(){
 
         previousPositions[entry.target.id] = entry.boundingClientRect.height === 0 ? null : entry.boundingClientRect.y;
         console.log(previousPositions, entry, entry.isIntersecting, direction)
-            if ( (!entry.isIntersecting && direction === 'up') || (entry.isIntersecting && direction === 'down') ){ // moving up out of viewport
+            if ( (direction === 'up' && entry.intersectionRatio >= 0.5) || (entry.isIntersecting && direction === 'down') ) { // moving up out of viewport
                 let currentActive = document.querySelector('a.tablink.active');
                 let newActive = document.querySelector('a[href="#' + entry.target.id + '"');
                 if ( currentActive !== newActive ){
                     currentActive.classList.remove('active');
                 }
                 newActive.classList.add('active');
-            } 
+            } if ( direction === 'down' && entry.intersectionRatio <= 0.5 && entry.intersectionRatio > 0) {
+                let currentActive = document.querySelector('a.tablink.active');
+                let newActive = document.querySelector('a[href="#' + entry.target.id + '"').previousElementSibling;
+                if ( newActive && currentActive !== newActive ){
+                    currentActive.classList.remove('active');
+                    newActive.classList.add('active');
+                }
+            }
         });
     }
     observer = new IntersectionObserver(observerCallback, observerOptions);
@@ -57,10 +64,12 @@ function setScrollMonitor(){
     var element = document.querySelector('.main-content'),
         watcher = scrollMonitor.create(element),
         header = document.querySelector('.header'),
-        nav = document.querySelector('.primary-navigation');
+        nav = document.querySelector('.primary-navigation'),
+        main = document.querySelector('.main-content');
 
     watcher.fullyEnterViewport(() => {
             header.classList.add('visible');
+            main.classList.add('visible');
             setTimeout(() => {
                 nav.classList.add('visible');
             }, 200);
@@ -72,6 +81,7 @@ function setScrollMonitor(){
                 header.classList.remove('visible');
             }, 200);
             nav.classList.remove('visible');
+            main.classList.remove('visible');
         }
     });
 }   
@@ -98,7 +108,7 @@ function initNav(){
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
-//smoothscroll.polyfill();
+smoothscroll.polyfill();
 if ( window.IS_PRERENDERING || process.env.NODE_ENV === 'development' )
 prerender(require.context('./pages/', true, /\.html$/));
 setScrollMonitor();
