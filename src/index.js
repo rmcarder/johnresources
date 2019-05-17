@@ -5,7 +5,7 @@ import './css/style.css';
 import prerender from './prerender.js';
 import scrollMonitor from 'scrollmonitor';
 
-/*
+
 
 function setObserver(){
 
@@ -52,7 +52,7 @@ function setObserver(){
             observer.observe(anchor); 
         }
     });
-}*/
+}
 function setScrollMonitor(){
     var element = document.querySelector('.main-content'),
         watcher = scrollMonitor.create(element),
@@ -75,7 +75,7 @@ function setScrollMonitor(){
         }
     });
 }   
-/*function scrollToSection(e, frag){
+function scrollToSection(e, frag){
     console.log(frag);
     e.preventDefault();
     document.querySelector(frag).scrollIntoView({behavior: 'smooth', block: 'start'});
@@ -94,7 +94,7 @@ function initNav(){
         });
     });
 }
-*/
+
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
@@ -102,6 +102,6 @@ window.onbeforeunload = function () {
 if ( window.IS_PRERENDERING || process.env.NODE_ENV === 'development' )
 prerender(require.context('./pages/', true, /\.html$/));
 setScrollMonitor();
-//setObserver();
-///initNav();    
-//initButton();
+setObserver();
+initNav();    
+initButton();
