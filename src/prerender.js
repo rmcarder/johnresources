@@ -23,7 +23,13 @@ function insertSection(r, key, i){
     document.querySelector('main .container-inner').appendChild(section);
 
     // nav
-    navItem.innerHTML = section.querySelector('h2').innerHTML;
+    if ( section.querySelector('h1') ){
+            navItem.innerHTML = section.querySelector('h1').innerHTML;
+
+    } else {
+        navItem.innerHTML = section.querySelector('h2').innerHTML;    
+    }
+    
     navItem.href = frag;
     
     nav.appendChild(navItem);

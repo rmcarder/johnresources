@@ -102,7 +102,7 @@ th {
 
 .header-hero {
   width: 100%;
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh);
   background-color: #32415C;
   display: block;
   /*padding: 30vh 40px 100px;*/
@@ -169,7 +169,7 @@ th {
     transition: transform 0.2s ease-in-out;
     transform: translateX(100%);
     position: fixed;
-    top: 60px;
+    top: 80px;
     right: 0;
 }
 .primary-navigation.visible {
@@ -214,8 +214,8 @@ th {
 .header {
   position: fixed;
   transform: translateY(-100%);
-  background: #fff;
-  height: 60px;
+  background: #32415C;
+  height: 80px;
   left: 0;
   /*position: sticky;*/
   right:0;
@@ -260,8 +260,8 @@ main .container-inner {
   
 }
 .logo-smaller {
-  width: 132px;
-  margin: 4px 0 0 0;
+  width: 232px;
+  margin: 2px 0 0 0;
   padding: 0;
 }
 .btn--toggle {
