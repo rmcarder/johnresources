@@ -19,7 +19,7 @@ body {
  
   background-color: #ffffff;
   font-family: 'AvertaStd', sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   color: #425661;
 }
 h1,h2,h3,h4,h5,h6 {
@@ -73,9 +73,20 @@ table {
 th {
   font-family: 'AvertaStd', sans-serif;;
   color: #425661;
-  width: 400px;
+ 
   text-align: left;
 } 
+
+.titleColumn {
+   width: 20%;
+}
+.descriptionColumn {
+   width: 55%;
+}
+.authorColumn {
+   width: 20%;
+}
+
 .table {
       width: 100%;
     max-width: 100%;
