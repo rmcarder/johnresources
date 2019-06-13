@@ -85,10 +85,11 @@ function setScrollMonitor(){
         }
     });
 }   
-function scrollToSection(e, frag){
+function scrollToSection(e, frag, behavior){
+    behavior = behavior || 'smooth';
     console.log(frag);
     e.preventDefault();
-    document.querySelector(frag).scrollIntoView({behavior: 'smooth', block: 'start'});
+    document.querySelector(frag).scrollIntoView({behavior: behavior, block: 'start'});
 }
 
 function initButton(){
@@ -99,8 +100,10 @@ function initButton(){
 function initNav(){
     document.querySelectorAll('.tablink').forEach(navItem => {
         navItem.addEventListener('click', function(e){
+            var behavior = window.innerWidth <= 911 ? 'auto' : 'smooth';
             e.preventDefault();
-            scrollToSection(e, '#section-' + navItem.href.match(/-(\d{2})/)[1]);
+            scrollToSection(e, '#section-' + navItem.href.match(/-(\d{2})/)[1], behavior);
+            document.querySelector('.primary-navigation').classList.remove('is-open');
         });
     });
 }
