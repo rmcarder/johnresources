@@ -143,6 +143,7 @@ th {
   
   min-height: 100vh;
 }
+
 .main-content section {
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
@@ -164,6 +165,11 @@ th {
 }
 .content-wrapper {
   display: flex;
+  background-color: #32415C;
+  transition: background-color 0.5s ease-in-out;
+}
+.content-wrapper.visible {
+  background-color: #fff;
 }
 .primary-navigation {
     
@@ -187,7 +193,15 @@ th {
     transform: translateX(0);
 
 }
-
+.arrow-down {
+  width: 30px;
+  position: fixed;
+  bottom: 10px;
+  left: calc(50% - 15px);
+}
+.arrow-down.hidden {
+  display: none;
+}
 /* Style the buttons that are used to open the tab content */
 .tab .tablink {
     display: block;

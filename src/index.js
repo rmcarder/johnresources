@@ -65,11 +65,15 @@ function setScrollMonitor(){
         watcher = scrollMonitor.create(element),
         header = document.querySelector('.header'),
         nav = document.querySelector('.primary-navigation'),
-        main = document.querySelector('.main-content');
+        main = document.querySelector('.main-content'),
+        wrapper = document.querySelector('.content-wrapper'),
+        arrowDown = document.querySelector('.arrow-down');
 
     watcher.fullyEnterViewport(() => {
             header.classList.add('visible');
             main.classList.add('visible');
+            wrapper.classList.add('visible');
+            arrowDown.classList.add('hidden');
             setTimeout(() => {
                 nav.classList.add('visible');
             }, 200);
@@ -82,6 +86,8 @@ function setScrollMonitor(){
             }, 200);
             nav.classList.remove('visible');
             main.classList.remove('visible');
+            wrapper.classList.remove('visible');
+            arrowDown.classList.remove('hidden');
         }
     });
 }   
