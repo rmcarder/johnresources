@@ -106,7 +106,10 @@ th {
     border-bottom: 2px solid #ddd;
 }
 
-
+.logo-bigger {
+  width: 100%;
+  max-width: 363px;
+}
 .section.main-content {
   width: 75%;
 }
@@ -394,5 +397,13 @@ main .container-inner {
   }
   .btn--toggle {
     display: block;
+  }
+}
+@media screen and (min-width: 1281px){
+  .header-wrapper {
+    width: 100%;
+  }
+  .header-hero--inner {
+    max-width: 990px !important;
   }
 }
