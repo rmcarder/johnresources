@@ -61,7 +61,7 @@ function setObserver(){
     });
 }
 function setScrollMonitor(){
-    var element = document.querySelector('.main-content'),
+    var element = document.querySelector('.header-wrapper'),
         watcher = scrollMonitor.create(element),
         header = document.querySelector('.header'),
         nav = document.querySelector('.primary-navigation'),
@@ -69,7 +69,7 @@ function setScrollMonitor(){
         wrapper = document.querySelector('.content-wrapper'),
         arrowDown = document.querySelector('.arrow-down');
 
-    watcher.fullyEnterViewport(() => {
+    watcher.exitViewport(() => {
             header.classList.add('visible');
             main.classList.add('visible');
             wrapper.classList.add('visible');
@@ -79,8 +79,7 @@ function setScrollMonitor(){
             }, 200);
         
     });
-    watcher.partiallyExitViewport(() => {
-        if (watcher.isBelowViewport){
+    watcher.enterViewport(() => {
             setTimeout(() => {
                 header.classList.remove('visible');
             }, 200);
@@ -88,7 +87,6 @@ function setScrollMonitor(){
             main.classList.remove('visible');
             wrapper.classList.remove('visible');
             arrowDown.classList.remove('hidden');
-        }
     });
 }   
 function scrollToSection(e, frag, behavior){
