@@ -369,7 +369,8 @@ body {
  
   background-color: #ffffff;
   font-family: 'AvertaStd', sans-serif;
-  font-size: 18px;
+  font-size: 15px;
+  line-height: 133%;
   color: #425661;
 }
 h1,h2,h3,h4,h5,h6 {
@@ -402,6 +403,7 @@ p {
 
 img {
   vertical-align: middle;
+  max-width: 1080px;
 }
 
 a {
@@ -423,9 +425,20 @@ table {
 th {
   font-family: 'AvertaStd', sans-serif;;
   color: #425661;
-  width: 400px;
+ 
   text-align: left;
 } 
+
+.titleColumn {
+   width: 20%;
+}
+.descriptionColumn {
+   width: 55%;
+}
+.authorColumn {
+   width: 20%;
+}
+
 .table {
       width: 100%;
     max-width: 100%;
@@ -445,14 +458,17 @@ th {
     border-bottom: 2px solid #ddd;
 }
 
-
+.logo-bigger {
+  width: 100%;
+  max-width: 363px;
+}
 .section.main-content {
   width: 75%;
 }
 
 .header-hero {
   width: 100%;
-  min-height: calc(100vh);
+  
   background-color: #32415C;
   display: block;
   /*padding: 30vh 40px 100px;*/
@@ -482,16 +498,20 @@ th {
   
   min-height: 100vh;
 }
+
 .main-content section {
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
+}
+.main-content section:first-of-type {
+  padding-top: 25vh;
 }
 .main-content.visible section {
   opacity: 1;
   }
 .main-content .container-inner {
-    width: 100%;
-   max-width: 850px;
+   max-width: 1100px;
+   width: 75%;
    margin: 0 auto;
    padding: 30px 10px;
   }
@@ -504,6 +524,11 @@ th {
 .content-wrapper {
   display: -ms-flexbox;
   display: flex;
+  background-color: #32415C;
+  transition: background-color 0.5s ease-in-out;
+}
+.content-wrapper.visible {
+  background-color: #fff;
 }
 .primary-navigation {
     
@@ -527,7 +552,15 @@ th {
     transform: translateX(0);
 
 }
-
+.arrow-down {
+  width: 30px;
+  position: fixed;
+  bottom: 10px;
+  left: calc(50% - 15px);
+}
+.arrow-down.hidden {
+  display: none;
+}
 /* Style the buttons that are used to open the tab content */
 .tab .tablink {
     display: block;
@@ -581,6 +614,7 @@ th {
 }
 .header-wrapper {
   width: 75%;
+  margin: 0 auto;
 }
 .container-inner {
   width: 100%;
@@ -602,9 +636,9 @@ main .container-inner {
   width: 75%;
 }
 .header--inner-inner {
-  width: 100%;
-  max-width: 850px;
+  width: 75%;  
   margin: 0 auto;
+  max-width: 1080px;
 }
 .icon {
   padding:5px;
@@ -665,36 +699,39 @@ main .container-inner {
 .btn--toggle {
   display: none;
   cursor: pointer;
-  width: 30px;
+  width: 40px;
+  height: 40px;
   padding: 0 3px;
   right: 10px;
   position: absolute;
 }
 .btn--toggle .btn__line:nth-of-type(1) {
-    transform: translateY(-7px);
+    transform: translateY(-12px);
 }
 .btn--toggle .btn__line:nth-of-type(3) {
-    transform: translateY(7px);
+    transform: translateY(12px);
 }
 .btn--toggle .btn__line {
     position: absolute;
     top: 50%;
     margin-top: -1px;
     display: block;
-    height: 2px;
-    width: 24px;
-    background: #32415C;
+    height: 3px;
+    width: 40px;
+    background: #fff;
     transition: background 0.45s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
     opacity: 1;
 }
 @media screen and ( max-width: 911px ){
-  .header-wrapper {
-  width: 100%;
-}
-
+    .header-wrapper {
+    width: 100%;
+  }
+ .main-content .container-inner, .header--inner-inner  {
+   width: 100%;
+ }
   .primary-navigation {
-    width: 228px;
-    transition: transform 0.4s ease-in-out;
+    width: 100%;
+    transition: transform 0.2s ease-in-out;
     transform: translate(100%,0);
     position: fixed;
     right: 0;
@@ -715,6 +752,53 @@ main .container-inner {
   .btn--toggle {
     display: block;
   }
+}
+@media screen and (min-width: 1281px){
+  .header-wrapper {
+    
+  }
+  .header-hero--inner {
+    max-width: 1100px !important;
+  }
+  body {
+    font-size: 1.15vw;
+  }
+}
+@media screen and (min-width: 1958px){
+  body {
+    font-size: 22.5px;
+  }
+}
+@media
+only screen and (max-width: 900px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr { border: 1px solid #ccc; }
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 170px;
+    margin-left: 120px;
+  }
+  td:before {
+    position: absolute;
+    top: 12px;
+    left: 6px;
+    width: 200px;
+    padding-right: 40px;
+    white-space: nowrap;
+    margin-left: -120px;
+  }
+  td:nth-of-type(1):before { content: "Resource Title"; }
+  td:nth-of-type(2):before { content: "Description"; }
+  td:nth-of-type(3):before { content: "Author"; }
 }
 
 /*# sourceMappingURL=../js/index.js.map*/
