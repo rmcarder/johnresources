@@ -16,12 +16,12 @@ module.exports = env => { // module.exports is function now to pass in env varia
                 rules: [{
                         test: /\.js$/,
                         exclude: [/node_modules/, /\.min\./, /vendor/],
-                        use: [/*{
+                        use: [{
                                 loader: 'babel-loader',
-                                options: {
+                               /* options: {
                                     plugins: [DynamicImport]
-                                }
-                            },*/
+                                }*/
+                            },
                             {
                                 loader: 'eslint-loader'
                             }
