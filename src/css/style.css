@@ -448,6 +448,8 @@ only screen and (max-width: 900px) {
   }
   th {
     float:left;
+    position: relative;
+    bottom: 1px;
   }
  
   
