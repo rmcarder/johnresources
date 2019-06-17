@@ -433,24 +433,24 @@ only screen and (max-width: 900px) {
     top: -9999px;
     left: -9999px;
   }
-  tr { border: 1px solid #ccc; }
+  tr { 
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  td:first-of-type {
+    border-top-width: 0 !important;
+  }
   td {
-    border: none;
-    border-bottom: 1px solid #eee;
+    
     position: relative;
     padding-left: 170px;
-    margin-left: 120px;
+    
   }
-  td:before {
-    position: absolute;
-    top: 12px;
-    left: 6px;
-    width: 200px;
-    padding-right: 40px;
-    white-space: nowrap;
-    margin-left: -120px;
+  th {
+    float:left;
   }
-  td:nth-of-type(1):before { content: "Resource Title"; }
-  td:nth-of-type(2):before { content: "Description"; }
-  td:nth-of-type(3):before { content: "Author"; }
+ 
+  
+  td:nth-of-type(2):before { content: "Description: "; }
+  td:nth-of-type(3):before { content: "Author: "; }
 }
