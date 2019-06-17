@@ -118,7 +118,7 @@ th {
 
 .header-hero {
   width: 100%;
-  
+  min-height: 100vh;
   background-color: #32415C;
   display: block;
   /*padding: 30vh 40px 100px;*/
@@ -127,8 +127,13 @@ th {
   background-position: center calc(100vh - 130px);
 
   background-size: 20px;*/
+  transition: background-color 0.5s ease-in-out;
 
 
+
+}
+.header-hero.white {
+  background-color: #fff;
 }
 .header-hero--inner {
   color: #fff;
@@ -150,15 +155,12 @@ th {
 }
 
 .main-content section {
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+  
 }
 .main-content section:first-of-type {
-  padding-top: 25vh;
+  padding-top: 0;
 }
-.main-content.visible section {
-  opacity: 1;
-  }
+
 .main-content .container-inner {
    max-width: 1100px;
    width: 75%;
@@ -173,8 +175,6 @@ th {
 }
 .content-wrapper {
   display: flex;
-  background-color: #32415C;
-  transition: background-color 0.5s ease-in-out;
 }
 .content-wrapper.visible {
   background-color: #fff;

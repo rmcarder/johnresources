@@ -62,6 +62,7 @@ function setObserver(){
 }
 function setScrollMonitor(){
     var element = document.querySelector('.header-wrapper'),
+        headerHero = document.querySelector('.header-hero'),
         watcher = scrollMonitor.create(element),
         header = document.querySelector('.header'),
         nav = document.querySelector('.primary-navigation'),
@@ -74,6 +75,7 @@ function setScrollMonitor(){
             main.classList.add('visible');
             wrapper.classList.add('visible');
             arrowDown.classList.add('hidden');
+            headerHero.classList.add('white');
             setTimeout(() => {
                 nav.classList.add('visible');
             }, 200);
@@ -83,6 +85,7 @@ function setScrollMonitor(){
             setTimeout(() => {
                 header.classList.remove('visible');
             }, 200);
+            headerHero.classList.remove('white');
             nav.classList.remove('visible');
             main.classList.remove('visible');
             wrapper.classList.remove('visible');
