@@ -32,14 +32,14 @@ function setObserver(){
         console.log(previousPositions, entry, entry.isIntersecting, direction)
             if ( (direction === 'up' && entry.intersectionRatio >= 0.5) || (entry.isIntersecting && direction === 'down') ) { // moving up out of viewport
                 let currentActive = document.querySelector('a.tablink.active');
-                let newActive = document.querySelector('a[href="#' + entry.target.id + '"');
+                let newActive = document.querySelector('a[href="#' + entry.target.id + '"]');
                 if ( currentActive !== newActive ){
                     currentActive.classList.remove('active');
                 }
                 newActive.classList.add('active');
             } if ( direction === 'down' && entry.intersectionRatio <= 0.5 && entry.intersectionRatio > 0) {
                 let currentActive = document.querySelector('a.tablink.active');
-                let newActive = document.querySelector('a[href="#' + entry.target.id + '"').previousElementSibling;
+                let newActive = document.querySelector('a[href="#' + entry.target.id + '"]').previousElementSibling;
                 if ( newActive && currentActive !== newActive ){
                     currentActive.classList.remove('active');
                     newActive.classList.add('active');
