@@ -209,7 +209,12 @@ th {
   left: 0;
   height: 30px;
   background-color: #32415C;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
 
+}
+.arrow-down.hidden {
+  opacity: 0;
 }
 .arrow-down svg {
   width: 30px;
@@ -219,9 +224,7 @@ th {
   
 
 }
-.arrow-down.hidden {
-  display: none;
-}
+
 /* Style the buttons that are used to open the tab content */
 .tab .tablink {
     display: block;
