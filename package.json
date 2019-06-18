@@ -37,7 +37,13 @@
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
+    "babel-preset-env": "^1.7.0",
     "mini-css-extract-plugin": "^0.5.0",
     "save-dev": "^2.0.0"
-  }
+  },
+  "browserslist": [
+    "last 2 version",
+    "> 1%",
+    "iOS >= 8"
+  ]
 }
