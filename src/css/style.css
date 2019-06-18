@@ -175,6 +175,7 @@ th {
 }
 .content-wrapper {
   display: flex;
+  z-index: 1;
 }
 .content-wrapper.visible {
   background-color: #fff;
@@ -202,10 +203,21 @@ th {
 
 }
 .arrow-down {
-  width: 30px;
+  width: 100%;
   position: fixed;
-  bottom: 10px;
-  left: calc(50% - 15px);
+  bottom: 0px;
+  left: 0;
+  height: 30px;
+  background-color: #32415C;
+
+}
+.arrow-down svg {
+  width: 30px;
+  left: 50%;
+  position: absolute;
+  bottom: 3px;
+  
+
 }
 .arrow-down.hidden {
   display: none;
