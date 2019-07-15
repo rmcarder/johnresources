@@ -157,9 +157,7 @@ th {
 .main-content section {
   
 }
-.main-content section:first-of-type {
-  padding-top: 0;
-}
+
 
 .main-content .container-inner {
    max-width: 1100px;

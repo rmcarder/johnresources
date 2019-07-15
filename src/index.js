@@ -96,7 +96,8 @@ function scrollToSection(e, frag, behavior){
     behavior = behavior || 'smooth';
     console.log(frag);
     e.preventDefault();
-    document.querySelector(frag).scrollIntoView({behavior: behavior, block: 'start'});
+    var anchor = document.querySelector(frag);
+    anchor.scrollIntoView({behavior, block: 'start'});
 }
 
 function initButton(){
