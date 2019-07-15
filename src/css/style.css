@@ -98,7 +98,7 @@ th {
     padding: 8px;
     line-height: 1.42857143;
     vertical-align: top;
-    border-top: 1px solid #ddd;
+    border-top: .5px solid #ddd;
 }
 .table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th {
     border-top: 0;
@@ -434,7 +434,7 @@ only screen and (max-width: 900px) {
     left: -9999px;
   }
   tr { 
-    border: 1px solid #ccc;
+    border: 0.5px solid #ccc;
     margin-bottom: 10px;
   }
   td:first-of-type {
