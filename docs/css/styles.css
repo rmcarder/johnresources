@@ -468,7 +468,7 @@ th {
 
 .header-hero {
   width: 100%;
-  
+  min-height: 100vh;
   background-color: #32415C;
   display: block;
   /*padding: 30vh 40px 100px;*/
@@ -477,8 +477,13 @@ th {
   background-position: center calc(100vh - 130px);
 
   background-size: 20px;*/
+  transition: background-color 0.5s ease-in-out;
 
 
+
+}
+.header-hero.white {
+  background-color: #fff;
 }
 .header-hero--inner {
   color: #fff;
@@ -500,15 +505,12 @@ th {
 }
 
 .main-content section {
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+  
 }
 .main-content section:first-of-type {
-  padding-top: 25vh;
+  padding-top: 0;
 }
-.main-content.visible section {
-  opacity: 1;
-  }
+
 .main-content .container-inner {
    max-width: 1100px;
    width: 75%;
@@ -522,10 +524,10 @@ th {
   
 }
 .content-wrapper {
+  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  background-color: #32415C;
-  transition: background-color 0.5s ease-in-out;
+  z-index: 1;
 }
 .content-wrapper.visible {
   background-color: #fff;
@@ -542,25 +544,43 @@ th {
 
     z-index: 2;
     will-change:scroll-position;
+    transition: -webkit-transform 0.2s ease-in-out;
     transition: transform 0.2s ease-in-out;
-    transform: translateX(100%);
+    transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
     position: fixed;
     top: 80px;
     right: 0;
 }
 .primary-navigation.visible {
-    transform: translateX(0);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
 
 }
 .arrow-down {
-  width: 30px;
+  width: 100%;
   position: fixed;
-  bottom: 10px;
-  left: calc(50% - 15px);
+  bottom: 0px;
+  left: 0;
+  height: 30px;
+  background-color: #32415C;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+
 }
 .arrow-down.hidden {
-  display: none;
+  opacity: 0;
 }
+.arrow-down svg {
+  width: 30px;
+  left: 50%;
+  position: absolute;
+  bottom: 3px;
+  
+
+}
+
 /* Style the buttons that are used to open the tab content */
 .tab .tablink {
     display: block;
@@ -597,7 +617,8 @@ th {
 }
 .header {
   position: fixed;
-  transform: translateY(-100%);
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
   background: #32415C;
   height: 80px;
   left: 0;
@@ -605,12 +626,16 @@ th {
   right:0;
   top:0;
   z-index: 2;
-  transform-origin: top;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  transition: -webkit-transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
   border-bottom: 1px solid #32415C;
 }
 .header.visible {
-  transform: translateY(0);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 .header-wrapper {
   width: 75%;
@@ -628,11 +653,14 @@ main .container-inner {
 .header--inner {
   margin: 0;
   
+  display: -webkit-flex;
+  
   display: -ms-flexbox;
   
   display: flex;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 75%;
 }
 .header--inner-inner {
@@ -706,10 +734,12 @@ main .container-inner {
   position: absolute;
 }
 .btn--toggle .btn__line:nth-of-type(1) {
-    transform: translateY(-12px);
+    -webkit-transform: translateY(-12px);
+            transform: translateY(-12px);
 }
 .btn--toggle .btn__line:nth-of-type(3) {
-    transform: translateY(12px);
+    -webkit-transform: translateY(12px);
+            transform: translateY(12px);
 }
 .btn--toggle .btn__line {
     position: absolute;
@@ -719,7 +749,9 @@ main .container-inner {
     height: 3px;
     width: 40px;
     background: #fff;
+    transition: background 0.45s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.45s cubic-bezier(0.165, 0.84, 0.44, 1), -webkit-transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
     transition: background 0.45s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: background 0.45s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.45s cubic-bezier(0.165, 0.84, 0.44, 1), -webkit-transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
     opacity: 1;
 }
 @media screen and ( max-width: 911px ){
@@ -731,19 +763,24 @@ main .container-inner {
  }
   .primary-navigation {
     width: 100%;
+    transition: -webkit-transform 0.2s ease-in-out;
     transition: transform 0.2s ease-in-out;
-    transform: translate(100%,0);
+    transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+    -webkit-transform: translate(100%,0);
+            transform: translate(100%,0);
     position: fixed;
     right: 0;
     left: auto;
 
   }
   .primary-navigation.visible {
-    transform: translate(100%,0);
+    -webkit-transform: translate(100%,0);
+            transform: translate(100%,0);
 
   }
   .primary-navigation.is-open {
-    transform: translate(0,0);;
+    -webkit-transform: translate(0,0);
+            transform: translate(0,0);;
   }
   .section.main-content {
     width: 100%;
@@ -779,26 +816,28 @@ only screen and (max-width: 900px) {
     top: -9999px;
     left: -9999px;
   }
-  tr { border: 1px solid #ccc; }
+  tr { 
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  td:first-of-type {
+    border-top-width: 0 !important;
+  }
   td {
-    border: none;
-    border-bottom: 1px solid #eee;
+    
     position: relative;
     padding-left: 170px;
-    margin-left: 120px;
+    
   }
-  td:before {
-    position: absolute;
-    top: 12px;
-    left: 6px;
-    width: 200px;
-    padding-right: 40px;
-    white-space: nowrap;
-    margin-left: -120px;
+  th {
+    float:left;
+    position: relative;
+    bottom: 1px;
   }
-  td:nth-of-type(1):before { content: "Resource Title"; }
-  td:nth-of-type(2):before { content: "Description"; }
-  td:nth-of-type(3):before { content: "Author"; }
+ 
+  
+  td:nth-of-type(2):before { content: "Description: "; }
+  td:nth-of-type(3):before { content: "Author: "; }
 }
 
 /*# sourceMappingURL=../js/index.js.map*/

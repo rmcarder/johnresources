@@ -32,14 +32,14 @@ function setObserver(){
         console.log(previousPositions, entry, entry.isIntersecting, direction)
             if ( (direction === 'up' && entry.intersectionRatio >= 0.5) || (entry.isIntersecting && direction === 'down') ) { // moving up out of viewport
                 let currentActive = document.querySelector('a.tablink.active');
-                let newActive = document.querySelector('a[href="#' + entry.target.id + '"');
+                let newActive = document.querySelector('a[href="#' + entry.target.id + '"]');
                 if ( currentActive !== newActive ){
                     currentActive.classList.remove('active');
                 }
                 newActive.classList.add('active');
             } if ( direction === 'down' && entry.intersectionRatio <= 0.5 && entry.intersectionRatio > 0) {
                 let currentActive = document.querySelector('a.tablink.active');
-                let newActive = document.querySelector('a[href="#' + entry.target.id + '"').previousElementSibling;
+                let newActive = document.querySelector('a[href="#' + entry.target.id + '"]').previousElementSibling;
                 if ( newActive && currentActive !== newActive ){
                     currentActive.classList.remove('active');
                     newActive.classList.add('active');
@@ -62,6 +62,7 @@ function setObserver(){
 }
 function setScrollMonitor(){
     var element = document.querySelector('.header-wrapper'),
+        headerHero = document.querySelector('.header-hero'),
         watcher = scrollMonitor.create(element),
         header = document.querySelector('.header'),
         nav = document.querySelector('.primary-navigation'),
@@ -74,6 +75,7 @@ function setScrollMonitor(){
             main.classList.add('visible');
             wrapper.classList.add('visible');
             arrowDown.classList.add('hidden');
+            headerHero.classList.add('white');
             setTimeout(() => {
                 nav.classList.add('visible');
             }, 200);
@@ -83,6 +85,7 @@ function setScrollMonitor(){
             setTimeout(() => {
                 header.classList.remove('visible');
             }, 200);
+            headerHero.classList.remove('white');
             nav.classList.remove('visible');
             main.classList.remove('visible');
             wrapper.classList.remove('visible');
@@ -93,7 +96,8 @@ function scrollToSection(e, frag, behavior){
     behavior = behavior || 'smooth';
     console.log(frag);
     e.preventDefault();
-    document.querySelector(frag).scrollIntoView({behavior: behavior, block: 'start'});
+    var anchor = document.querySelector(frag);
+    anchor.scrollIntoView({behavior, block: 'start'});
 }
 
 function initButton(){

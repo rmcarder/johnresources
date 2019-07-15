@@ -118,7 +118,7 @@ th {
 
 .header-hero {
   width: 100%;
-  
+  min-height: 100vh;
   background-color: #32415C;
   display: block;
   /*padding: 30vh 40px 100px;*/
@@ -127,8 +127,13 @@ th {
   background-position: center calc(100vh - 130px);
 
   background-size: 20px;*/
+  transition: background-color 0.5s ease-in-out;
 
 
+
+}
+.header-hero.white {
+  background-color: #fff;
 }
 .header-hero--inner {
   color: #fff;
@@ -150,15 +155,10 @@ th {
 }
 
 .main-content section {
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+  
 }
-.main-content section:first-of-type {
-  padding-top: 25vh;
-}
-.main-content.visible section {
-  opacity: 1;
-  }
+
+
 .main-content .container-inner {
    max-width: 1100px;
    width: 75%;
@@ -173,8 +173,7 @@ th {
 }
 .content-wrapper {
   display: flex;
-  background-color: #32415C;
-  transition: background-color 0.5s ease-in-out;
+  z-index: 1;
 }
 .content-wrapper.visible {
   background-color: #fff;
@@ -202,14 +201,28 @@ th {
 
 }
 .arrow-down {
-  width: 30px;
+  width: 100%;
   position: fixed;
-  bottom: 10px;
-  left: calc(50% - 15px);
+  bottom: 0px;
+  left: 0;
+  height: 30px;
+  background-color: #32415C;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+
 }
 .arrow-down.hidden {
-  display: none;
+  opacity: 0;
 }
+.arrow-down svg {
+  width: 30px;
+  left: 50%;
+  position: absolute;
+  bottom: 3px;
+  
+
+}
+
 /* Style the buttons that are used to open the tab content */
 .tab .tablink {
     display: block;
@@ -295,6 +308,7 @@ main .container-inner {
 }
 .logo-smaller {
   width: 232px;
+  height: 73px;
   margin: 2px 0 0 0;
   padding: 0;
 }
