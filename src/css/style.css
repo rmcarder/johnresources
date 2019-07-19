@@ -2,7 +2,12 @@
   STYLES.CSS
 
   */
-
+.observer-anchor {
+  top: 75vh;
+  bottom: 0;
+  position: absolute;
+  outline: 1px solid red;
+}
 * {box-sizing: border-box}
 
 /* Set height of body and the document to 100% */
@@ -114,6 +119,7 @@ th {
 }
 .section.main-content {
   width: 75%;
+  position: relative;
 }
 
 .header-hero {
