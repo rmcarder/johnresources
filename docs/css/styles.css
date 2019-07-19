@@ -358,6 +358,9 @@ template {
   position: absolute;
   outline: 1px solid red;
 }
+.section.tabcontent {
+  position: relative;
+}
 * {box-sizing: border-box}
 
 /* Set height of body and the document to 100% */
@@ -505,7 +508,7 @@ th {
   width: 100%;
 
   padding-bottom: 75px;
-  padding-top: 90px;
+ /* padding-top: 90px;*/
   
   min-height: 100vh;
 }
@@ -523,7 +526,8 @@ th {
   }
 .anchor {
   position: absolute;
-  height: 100vh;
+  top: 50vh;
+  bottom: 50vh;
   width: 1px;
   
 }
