@@ -9,39 +9,23 @@ import prerender from './prerender.js';
 
 function setObserver(){
 
-    var previousPositions = {},
-        observerOptions = {
+    var observerOptions = {
           root: null,
           rootMargin: '0px 0px 0px 0px',
-          threshold: [0.25, 0.5, 0.75, 1.0]
         },
         observer;
 
     function observerCallback(entries){
         
         entries.forEach(entry => {
-        var direction;
-        if ( previousPositions[entry.target.id] === null || previousPositions[entry.target.id] > entry.boundingClientRect.y ){
-            direction = 'up';
-        } else {
-            direction = 'down';
-        }
-
-        previousPositions[entry.target.id] = entry.boundingClientRect.height === 0 ? null : entry.boundingClientRect.y;
-            if ( (direction === 'up' && entry.intersectionRatio >= 0.5) || (entry.isIntersecting && direction === 'down') ) { // moving up out of viewport
+            console.log(entry);
+            if ( entry.isIntersecting ){
                 let currentActive = document.querySelector('a.tablink.active');
                 let newActive = document.querySelector('a[href="#' + entry.target.id + '"]');
                 if ( currentActive !== newActive ){
                     currentActive.classList.remove('active');
                 }
                 newActive.classList.add('active');
-            } if ( direction === 'down' && entry.intersectionRatio <= 0.5 && entry.intersectionRatio > 0) {
-                let currentActive = document.querySelector('a.tablink.active');
-                let newActive = document.querySelector('a[href="#' + entry.target.id + '"]').previousElementSibling;
-                if ( newActive && currentActive !== newActive ){
-                    currentActive.classList.remove('active');
-                    newActive.classList.add('active');
-                }
             }
         });
     }
@@ -68,7 +52,6 @@ function setScrollMonitor(){
         observerOptions = {
           root: null,
           rootMargin: '0px 0px 0px 0px',
-            threshold: [0.25, 0.5, 0.75, 1.0]
         },
         observer = new IntersectionObserver(observerCallback, observerOptions),
         anchor = document.querySelector('.observer-anchor');
