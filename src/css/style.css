@@ -280,6 +280,7 @@ th {
   transform-origin: top;
   transition: transform 0.2s ease-in-out;
   border-bottom: 1px solid #32415C;
+  will-change: scroll-position;
 }
 .header.visible {
   transform: translateY(0);
