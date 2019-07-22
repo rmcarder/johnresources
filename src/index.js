@@ -3,47 +3,29 @@ import 'normalize.css';
 import './css/style.css';
 import smoothscroll from 'smoothscroll-polyfill';
 import prerender from './prerender.js';
-import scrollMonitor from 'scrollmonitor';
+//import scrollMonitor from 'scrollmonitor';
 
 
 
 function setObserver(){
 
-    var previousPositions = {},
-        observerOptions = {
+    var observerOptions = {
           root: null,
           rootMargin: '0px 0px 0px 0px',
-          threshold: [0.25, 0.5, 0.75, 1.0]
         },
         observer;
 
     function observerCallback(entries){
         
         entries.forEach(entry => {
-        var direction;
-        console.log(entry);
-        if ( previousPositions[entry.target.id] === null || previousPositions[entry.target.id] > entry.boundingClientRect.y ){
-            direction = 'up';
-        } else {
-            direction = 'down';
-        }
-
-        previousPositions[entry.target.id] = entry.boundingClientRect.height === 0 ? null : entry.boundingClientRect.y;
-        console.log(previousPositions, entry, entry.isIntersecting, direction)
-            if ( (direction === 'up' && entry.intersectionRatio >= 0.5) || (entry.isIntersecting && direction === 'down') ) { // moving up out of viewport
+            console.log(entry);
+            if ( entry.isIntersecting ){
                 let currentActive = document.querySelector('a.tablink.active');
                 let newActive = document.querySelector('a[href="#' + entry.target.id + '"]');
                 if ( currentActive !== newActive ){
                     currentActive.classList.remove('active');
                 }
                 newActive.classList.add('active');
-            } if ( direction === 'down' && entry.intersectionRatio <= 0.5 && entry.intersectionRatio > 0) {
-                let currentActive = document.querySelector('a.tablink.active');
-                let newActive = document.querySelector('a[href="#' + entry.target.id + '"]').previousElementSibling;
-                if ( newActive && currentActive !== newActive ){
-                    currentActive.classList.remove('active');
-                    newActive.classList.add('active');
-                }
             }
         });
     }
@@ -61,37 +43,46 @@ function setObserver(){
     });
 }
 function setScrollMonitor(){
-    var element = document.querySelector('.header-wrapper'),
-        headerHero = document.querySelector('.header-hero'),
-        watcher = scrollMonitor.create(element),
+    var headerHero = document.querySelector('.header-hero'),
         header = document.querySelector('.header'),
         nav = document.querySelector('.primary-navigation'),
         main = document.querySelector('.main-content'),
         wrapper = document.querySelector('.content-wrapper'),
-        arrowDown = document.querySelector('.arrow-down');
+        arrowDown = document.querySelector('.arrow-down'),
+        observerOptions = {
+          root: null,
+          rootMargin: '0px 0px 0px 0px',
+        },
+        observer = new IntersectionObserver(observerCallback, observerOptions),
+        anchor = document.querySelector('.observer-anchor');
 
-    watcher.exitViewport(() => {
-            header.classList.add('visible');
-            main.classList.add('visible');
-            wrapper.classList.add('visible');
-            arrowDown.classList.add('hidden');
-            headerHero.classList.add('white');
-            setTimeout(() => {
-                nav.classList.add('visible');
-            }, 200);
-        
-    });
-    watcher.enterViewport(() => {
-            setTimeout(() => {
-                header.classList.remove('visible');
-            }, 200);
-            headerHero.classList.remove('white');
-            nav.classList.remove('visible');
-            main.classList.remove('visible');
-            wrapper.classList.remove('visible');
-            arrowDown.classList.remove('hidden');
-    });
-}   
+        observer.observe(anchor);
+
+    function observerCallback(entries){
+        entries.forEach(entry => {
+            console.log(entry);
+            if ( entry.isIntersecting ){
+                header.classList.add('visible');
+                main.classList.add('visible');
+                wrapper.classList.add('visible');
+                arrowDown.classList.add('hidden');
+                headerHero.classList.add('white');
+                setTimeout(() => {
+                    nav.classList.add('visible');
+                }, 200);   
+            } else {
+                setTimeout(() => {
+                    header.classList.remove('visible');
+                }, 200);
+                headerHero.classList.remove('white');
+                nav.classList.remove('visible');
+                main.classList.remove('visible');
+                wrapper.classList.remove('visible');
+                arrowDown.classList.remove('hidden');
+            }
+        });
+    }
+}
 function scrollToSection(e, frag, behavior){
     behavior = behavior || 'smooth';
     console.log(frag);

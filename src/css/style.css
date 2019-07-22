@@ -2,7 +2,15 @@
   STYLES.CSS
 
   */
-
+.observer-anchor {
+  top: 75vh;
+  bottom: 0;
+  position: absolute;
+  outline: 1px solid red;
+}
+.section.tabcontent {
+  position: relative;
+}
 * {box-sizing: border-box}
 
 /* Set height of body and the document to 100% */
@@ -114,6 +122,7 @@ th {
 }
 .section.main-content {
   width: 75%;
+  position: relative;
 }
 
 .header-hero {
@@ -167,7 +176,8 @@ th {
   }
 .anchor {
   position: absolute;
-  height: 100vh;
+  top: 50vh;
+  bottom: 50vh;
   width: 1px;
   
 }
@@ -270,6 +280,7 @@ th {
   transform-origin: top;
   transition: transform 0.2s ease-in-out;
   border-bottom: 1px solid #32415C;
+  will-change: scroll-position;
 }
 .header.visible {
   transform: translateY(0);
