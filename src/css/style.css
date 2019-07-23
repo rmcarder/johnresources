@@ -5,8 +5,9 @@
 .observer-anchor {
   top: 75vh;
   bottom: 0;
+  width: 1px;
   position: absolute;
-  outline: 1px solid red;
+  
 }
 .section.tabcontent {
   position: relative;
@@ -156,7 +157,7 @@ th {
 }
 .section {
   width: 100%;
-
+ position: relative;
   padding-bottom: 75px;
   padding-top: 90px;
   
